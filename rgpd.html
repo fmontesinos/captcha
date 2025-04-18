@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Implementa RGPD en tu Sitio Web - captcha.gratis</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, h3 {
+      color: #0b5ed7;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    .code-block {
+      background: #f4f4f4;
+      padding: 10px;
+      border-radius: 4px;
+      font-family: 'Courier New', Courier, monospace;
+      position: relative;
+      margin-bottom: 15px;
+    }
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #0b5ed7;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+    .copy-button:hover {
+      background: #084298;
+    }
+    .step {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #e9ecef;
+      border-radius: 4px;
+    }
+    .step h3 {
+      margin-top: 0;
+    }
+    .button {
+      display: inline-block;
+      background: #0b5ed7;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .button:hover {
+      background: #084298;
+    }
+    .example {
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div className="container">
+    <h1>Implementa RGPD en tu Sitio Web</h1>
+    <p>Con <strong>captcha.gratis</strong>, añadir un sistema de gestión de cookies compatible con el RGPD es fácil y gratuito. Sigue estos pasos para que tu sitio cumpla con la normativa de protección de datos y ofrezca una mejor experiencia a tus usuarios.</p>
+
+    <h2>¿Qué es el RGPD y por qué lo necesitas?</h2>
+    <p>El RGPD (Reglamento General de Protección de Datos) es una ley que protege la privacidad de los usuarios en internet. Si tu sitio web usa cookies (por ejemplo, para analizar visitas o mostrar anuncios), necesitas pedir permiso a tus visitantes. Nuestro script te ayuda a hacerlo de forma sencilla, mostrando un modal donde los usuarios pueden elegir qué cookies aceptar.</p>
+
+    <h2>Cómo añadir el sistema RGPD a tu web</h2>
+    <div className="step">
+      <h3>Paso 1: Copia el código</h3>
+      <p>Añade este código al final del <code>&lt;body&gt;</code> de tu página HTML. Este script muestra un modal de cookies a tus visitantes.</p>
+      <div className="code-block">
+        <button className="copy-button" onclick="copyCode('code1')">Copiar</button>
+        <pre id="code1">
+&lt;script src="https://captcha.gratis/rgpd.js.php?lang=es&force=true&policyUrl=/politica-cookies"&gt;&lt;/script&gt;
+        </pre>
+      </div>
+    </div>
+
+    <div className="step">
+      <h3>Paso 2: Personaliza el idioma (opcional)</h3>
+      <p>El parámetro <code>lang</code> controla el idioma del modal. Usa <code>es</code> para español, <code>en</code> para inglés, o <code>fr</code> para francés. Por ejemplo, para inglés:</p>
+      <div className="code-block">
+        <button className="copy-button" onclick="copyCode('code2')">Copiar</button>
+        <pre id="code2">
+&lt;script src="https://captcha.gratis/rgpd.js.php?lang=en&force=true&policyUrl=/politica-cookies"&gt;&lt;/script&gt;
+        </pre>
+      </div>
+    </div>
+
+    <div className="step">
+      <h3>Paso 3: Añade acciones basadas en el consentimiento (opcional)</h3>
+      <p>Si usas herramientas como Google Analytics o anuncios, puedes cargarlas solo si el usuario da su consentimiento. Añade este código antes del script RGPD:</p>
+      <div className="code-block">
+        <button className="copy-button" onclick="copyCode('code3')">Copiar</button>
+        <pre id="code3">
+&lt;script&gt;
+  window.onConsentChange = function(preferences) {
+    console.log('Consentimiento actualizado:', preferences);
+    if (preferences.cookies.analytics) {
+      console.log('Cargando Google Analytics...');
+      // Aquí iría el código para cargar Google Analytics
+    }
+    if (preferences.cookies.advertising) {
+      console.log('Cargando anuncios...');
+      // Aquí iría el código para cargar anuncios
+    }
+  };
+&lt;/script&gt;
+        </pre>
+      </div>
+    </div>
+
+    <div className="step">
+      <h3>Paso 4: Prueba el modal</h3>
+      <p>Haz clic en el botón de abajo para ver cómo aparece el modal de cookies en tu sitio. Puedes probarlo en diferentes idiomas cambiando el parámetro <code>lang</code>.</p>
+      <div className="example">
+        <button className="button" onclick="window.showRGPDModal()">Probar el Modal de Cookies</button>
+      </div>
+    </div>
+
+    <h2>¿Dónde pegar el código?</h2>
+    <p>Si usas un editor web (como WordPress, Wix, o un editor HTML), busca la sección donde puedes añadir código personalizado. Pega el script justo antes de la etiqueta <code>&lt;/body&gt;</code>. Por ejemplo:</p>
+    <div className="code-block">
+      <button className="copy-button" onclick="copyCode('code4')">Copiar</button>
+      <pre id="code4">
+&lt;body&gt;
+  &lt;h1&gt;Mi Sitio Web&lt;/h1&gt;
+  &lt;p&gt;Bienvenido a mi sitio.&lt;/p&gt;
+
+  &lt;script src="https://captcha.gratis/rgpd.js.php?lang=es&force=true&policyUrl=/politica-cookies"&gt;&lt;/script&gt;
+&lt;/body&gt;
+      </pre>
+    </div>
+
+    <h2>¿Necesitas ayuda?</h2>
+    <p>Si tienes dudas o necesitas personalizar el script (por ejemplo, para producción o más dominios), consulta nuestra <a href="https://captcha.gratis/docs" target="_blank">documentación completa</a> o contáctanos en <a href="mailto:soporte@captcha.gratis">soporte@captcha.gratis</a>.</p>
+  </div>
+
+  <script>
+    // Función para copiar código al portapapeles
+    function copyCode(elementId) {
+      const code = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('¡Código copiado al portapapeles!');
+      }).catch(err => {
+        console.error('Error al copiar:', err);
+      });
+    }
+
+    // Configurar el manejo del consentimiento
+    window.onConsentChange = function(preferences) {
+      console.log('Consentimiento actualizado:', preferences);
+      if (preferences.cookies.analytics) {
+        console.log('Cargando Google Analytics...');
+      }
+      if (preferences.cookies.advertising) {
+        console.log('Cargando anuncios...');
+      }
+    };
+  </script>
+
+  <!-- Incluir el script RGPD -->
+  <script src="https://captcha.gratis/rgpd.js.php?lang=es&force=true&policyUrl=/politica-cookies"></script>
+</body>
+</html>
